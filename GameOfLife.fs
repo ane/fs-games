@@ -36,8 +36,8 @@ let evolve_cell board loc =
   let rec state = check_cell board loc
   and neighbors = count_neighbors board loc
   in match neighbors with
-      | 2 -> if state = true then true else false
-      | 3 -> if state = false then true else true
+      | 2 -> state
+      | 3 -> true
       | _ -> false
 
 // Call the above function for each cell
@@ -63,7 +63,7 @@ form.FormBorderStyle <- FormBorderStyle.FixedDialog
 
 let mutable labels = Array2D.create 10 10 (new Label())
 
-// alustaa taulukon
+// Initialize array
 let create_labels =
   labels |> Array2D.mapi (fun x y label -> 
     new Label(
